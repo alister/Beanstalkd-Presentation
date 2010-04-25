@@ -1,0 +1,261 @@
+Who am I?
+
+Senior (ergo, only) PHP Developer at Binweevils.com
+Since December 2009
+Programming PHP since v3, ~ 11 years ago
+On the internet since at least 1996, and BBS's since 1987
+
+1999/10/31  Alister@minotaur.nu  Alister Bulman
+* Allow FastTemplate (via set_root) take an arrary of directory names
+
+<small>I also have a lot of my old source code in version control....</small>
+
+------------------------
+
+Queues
+    Acts as a message buffer between producer and consumer
+    
+Daemon
+    When messages are released to the consumer/worker
+
+Producer
+    Creates messages that are put into the queue
+    
+Consumer/Worker
+    Pulls messages from the queue, and works on them
+
+
+------------------------
+
+
+Why are job queues useful?
+
+Many long running, or intensive tasks could be done in the background
+
+  * Background Processing
+  * Parallel Processing
+  * Distributed Processing
+
+* processing image or videos
+* Sending out emails 
+* Fetching information in the background
+  * Updating RSS feeds
+* Asyncronous processing
+* Fetching information periodically
+
+Advantages
+* Parallel and asyncronous work
+* Scales easily - run more workers
+* call functionality written in other languages
+
+
+There are a number of jobQueue / message queues
+* ActiveMQ
+* RabbitMQ, written in Erlang (recently bought by VMWare)
+* Amazon SQS
+* JMS
+* Gearman, like so many  other things, originally created by Livejournal and written in Perl. A newer version was created by KROW, with the daemon in 'C'
+* Zero MQ
+* Starling (was created/used by Twitter)
+* Sparrow
+* Kestrel
+* Dropr
+* Apache QPid
+* MSMQ
+* MemcacheQ - not built on memcache, but uses a similar text-based protocol
+
+Message formatting
+* Simple strings
+  * For example, 'clean URLs' style
+     * /task/image/resize/filename/12345.jpg/newx/640
+  * JSON
+     * { command: 'resize', param { 'filename': '12345.jpg' } }
+  * XML
+  * Google's own encodeing, _____________
+
+------------------------
+
+queueing via a database
+    DB speed
+
+
+Beanstalkd
+    inspired by Memcache
+       - simple, text based protocol
+    Simple comparered to others such as RabbitMQ
+        80% the functionality with 20% the weight and complexity
+
+The most basic use:
+    put a string onto a queue, and pull it out later from a worker
+    Simple, but may be too unstructured
+
+
+* Priorities - Give a number from 0 to 1000 when queueing a job and it will jump ahead of all jobs already enqueued with a higher number.
+* Persistence - Although beanstalkd stores its jobs in memory for speed and simplicity (ala memcached or redis-server), it can also save its state to a file so that you can cycle the beanstalkd process without losing any jobs.
+* Federation - Fault-tolerance and horizontal scalability is provided the same way as Memcache - through federation by the client. Take a look at how the Ruby client handles multiple beanstalkd servers, it’s really quite clever.
+* Buried jobs - When a job causes an error, you can bury it. This keeps it around for later introspection and debugging (or even re-running it), while keeping it separated from active jobs.
+* Timeouts - The default behavior for jobs not acknowledged by a client (by deleting it when finished) to re-queue. This prevents failed jobs (particularly from a client that loses its connection partway through the job) from getting lost, the same purpose of ack in AMQP. Delayed Job uses its locked_at and locked_by fields for this purpose, but it’s very easy for a worker which doesn’t exit cleanly to leave jobs in a jammed/stuck state. Beanstalk’s reserve, work, delete cycle, with a timeout to dereserve the job, means it’s impossible for a bad client to prevent a job from completing.
+
+
+Watch out
+    * if a job isn't deleted by the worker, it will be put back on the queue to be run. Unless it's deleted or buried, it will be put back - so if there is a problem with the worker, you may get stuck.
+    * If you are using persistance, a binary log file is not deleted till all jobs in the file are deleted. Buried jobs will keep the log file around, which might end up with out-of-disk errors.
+
+
+More Information:
+ * http://wiki.github.com/kr/beanstalkd/faq
+ * http://adam.blog.heroku.com/past/2010/4/24/beanstalk_a_simple_and_fast_queueing_backend/
+ * http://code.flickr.com/blog/2008/09/26/flickr-engineers-do-it-offline/
+ 
+------------------------
+
+The classic wikipedia quote (Message queue)
+
+    In computer science, message queues and mailboxes are 
+    software-engineering components used for interprocess 
+    communication, or for inter-thread communication within 
+    the same process. They use a queue for messaging - 
+    the passing of control or of content. Group communication 
+    systems provide similar kinds of functionality.
+
+In fact, a message queue is not quite the same as a job 
+queue. Message queues usually have some more features built 
+in to manipulate the data on the way through.
+
+Others 
+  Amazon SQS
+  The Swartz (built on Gearman)
+  Starling (ran Twitter for a while)
+  RabbitMQ
+  ActiveMQ
+
+Wikipedia has it's own job queue - 
+  http://en.wikipedia.org/wiki/Help:Job_queue
+
+------------------------
+
+Not a dump-truck
+X South-road-dump-truck4.jpg
+
+------------------------
+
+series_of_tubes.jpg
+
+They want to deliver vast amounts of information over the 
+Internet. And again, the Internet is not something that 
+you just dump something on. It's not a big truck. It's a 
+series of tubes. And if you don't understand, those tubes 
+can be filled and if they are filled, when you put your 
+message in, it gets in line and it's going to be delayed 
+by anyone that puts into that tube enormous amounts of 
+material, enormous amounts of material.
+
+the-internet-a-series-of-tubes-300x262.jpg
+
+------------------------
+beanstalkd  is  a fast, distributed, in-memory work-queue 
+service. Its interface is generic, but was originally 
+designed for reducing the latency of page views in 
+high-volume web applications by running most 
+time-consuming tasks asynchronously.
+
+------------------------
+
+Why would you use a queue?
+
+If you don't need to do everything right now
+
+If you can't do it where you are
+
+  - resizing images / videos
+
+------------------------
+
+Three killer features  (Axe murderer pic?)
+
+ * Priorities
+ 
+ * Tubes
+ 
+ * Delays
+
+------------------------
+------------------------
+------------------------
+------------------------
+Beanstalkd is a big to-do list for your distributed application. 
+If there is a unit of work that you want to defer to later 
+(say, sending an email, pushing some data to a slow external 
+service, pulling data from a slow external service, generating 
+high-quality image thumbnails) you put a description of that 
+work, a 'job', into Beanstalkd. Some processes (such as web 
+request handlers), 'producers', put jobs into the queue. Other 
+processes, 'workers', take jobs out of the queue and run them.
+From the BeanstalkD FAQ
+
+
+------------------------
+wget http://xph.us/dist/beanstalkd/beanstalkd-1.4.2.tar.gz
+tar xzf beanstalkd-1.4.2.tar.gz
+cd beanstalkd-1.4.2
+./configure
+make
+sudo make install
+
+
+ - Once beanstalkd is installed, we can test it by firing it up:
+
+./beanstalkd -d -l 10.0.1.5 -p 11300
+# -d         Detach and run beanstalkd as a daemon.
+# -l <addr>  Listen on address ADDR (default is 0.0.0.0 / ALL)
+# -p <port>  Listen on TCP port PORT (default is 11300).
+
+------------------------
+
+ * BeanStalk.class.php - http://sourceforge.net/projects/beanstalk/
+
+ * Pheanstalk - http://github.com/pda/pheanstalk
+
+------------------------
+
+<?php
+// register Pheanstalk class loader
+require_once 'pheanstalk_init.php';
+
+$pheanstalk = new Pheanstalk('127.0.0.1');
+
+// ======================
+// producer (queues jobs)
+
+$pheanstalk
+    ->useTube('testtube')
+    ->put("job payload goes here\n");
+
+// ======================
+// worker (performs jobs)
+
+$job = $pheanstalk->watch('testtube')
+           ->ignore('default')
+           ->reserve();
+
+echo $job->getData();
+
+$pheanstalk->delete($job);
+
+
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+
+Questions
+
+Alister Bulman
+http://abulman.co.uk
+http://www.google.com/profiles/abulman
+
+------------------------
