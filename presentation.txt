@@ -1,14 +1,8 @@
 Who am I?
 
-Senior (ergo, only) PHP Developer at Binweevils.com
+Senior (ergo, currently, only) PHP Developer at Binweevils.com
 Since December 2009
 Programming PHP since v3, ~ 11 years ago
-On the internet since at least 1996, and BBS's since 1987
-
-1999/10/31  Alister@minotaur.nu  Alister Bulman
-* Allow FastTemplate (via set_root) take an arrary of directory names
-
-<small>I also have a lot of my old source code in version control....</small>
 
 ------------------------
 
@@ -77,6 +71,7 @@ Message formatting
 
 queueing via a database
     DB speed
+    PEAR Mail_Queue
 
 
 Beanstalkd

@@ -8,17 +8,17 @@
 <!-- metadata -->
 <meta name="generator" content="S5" />
 <meta name="version" content="S5 1.1" />
-<meta name="presdate" content="20050728" />
-<meta name="author" content="Eric A. Meyer" />
-<meta name="company" content="Complex Spiral Consulting" />
+<meta name="presdate" content="20100425" />
+<meta name="author" content="Alister Bulman" />
+<meta name="company" content="n/a" />
 <!-- configuration parameters -->
 <meta name="defaultView" content="slideshow" />
 <meta name="controlVis" content="hidden" />
 <!-- style sheet links -->
-<link rel="stylesheet" href="ui/i18n/slides.css" type="text/css" media="projection" id="slideProj" />
-<link rel="stylesheet" href="ui/i18n/outline.css" type="text/css" media="screen" id="outlineStyle" />
-<link rel="stylesheet" href="ui/i18n/print.css" type="text/css" media="print" id="slidePrint" />
-<link rel="stylesheet" href="ui/i18n/opera.css" type="text/css" media="projection" id="operaFix" />
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
 <!-- embedded styles -->
 <style type="text/css" media="all">
 .imgcon {width: 525px; margin: 0 auto; padding: 0; text-align: center;}
@@ -39,22 +39,26 @@ img#me05 {top: 43px;left: 36px;}
 <div id="currentSlide"><!-- DO NOT EDIT --></div>
 <div id="header"></div>
 <div id="footer">
-<h1>S5 Testbed</h1>
-<h2>Your computer &#8226; Today's date</h2>
+<h1>Beanstalk job queue</h1>
+<h2>PHP London meetup &#8226; May 6th, 2010</h2>
 </div>
 
 </div>
 <div class="presentation">
 
 <div class="slide">
-<h1>S5: An Introduction</h1>
-<h3>Eric A. Meyer</h3>
-<h4><a href="http://www.complexspiral.com/">Complex Spiral Consulting</a></h4>
+<h1>Beanstalkd: <br />
+   - An Introduction</h1>
+<h2>Alister Bulman, <a href="http://abulman.co.uk/">abulman.co.uk</a></h2>
+
+<p>Senior (currently only) PHP Developer at <a href="http://binweevils.com">Binweevils.com</a></p>
+<p>Programming PHP since 1999, PHP v3, ~ 11 years ago. Previously in everything from a 
+ZX81 and BBC/Electron, 6502 to 8086 Assembler, Pascal and C/C++</p>
 </div>
 
 
 <div class="slide">
-<h1>What Is S5?</h1>
+<h1>What Is A Job Queue?</h1>
 <ul>
 <li>It's a <strong>S</strong>imple <strong>S</strong>tandards-based <strong>S</strong>lide <strong>S</strong>how <strong>S</strong>ystem</li>
 <li>One XHTML document provides all of the slide show's content</li>
@@ -66,8 +70,29 @@ img#me05 {top: 43px;left: 36px;}
 
 
 <div class="slide">
-<h1>Operatic Origins</h1>
-<ul>
+<h1>Important Note</h1>
+<img src="South-road-dump-truck4.jpg" alt="Beanstalkd is NOT A DUMP TRUCK" align="left" />
+<p>It's NOT a big truck</p>
+</div>
+
+
+<div class="slide">
+<h1>Beanstalkd is a series of TUBES</h1>
+<img src="the-internet-a-series-of-tubes-300x262.jpg" alt="Beanstalkd is a series of TUBES" align="left" />
+
+<p style="margin-left: 50%;display:block;"><blockquote >
+... The Internet is not something that you just dump something on. It's not a 
+big truck. It's a series of tubes. And if you don't understand, those tubes 
+can be filled and if they are filled, when you put your message in, it gets 
+in line and it's going to be delayed by anyone that puts into that tube 
+enormous amounts of material.  - former United States Senator Ted Stevens (R-Alaska)</blockquote></p>
+</div>
+
+
+
+<div class="slide">
+<h1>Why are job queues useful?</h1>
+<ul class="incremental">
 <li>Opera 4 introduced <a href="http://www.opera.com/support/tutorials/operashow/">Opera Show</a>, a projection-mode style sheet technology</li>
 <li>Allows a single XHTML document to be turned into a PowerPoint-like slide show</li>
 <li>Adding screen and print style sheets allows for multi-medium views of a single document</li>
@@ -77,7 +102,7 @@ img#me05 {top: 43px;left: 36px;}
 
 
 <div class="slide">
-<h1>Expanding The Field</h1>
+<h1>Queueing via a database</h1>
 <ul>
 <li>When Opera 7.5 for OS X came out, the banner ads persisted in projection mode</li>
 <li><a href="http://tantek.com/" rel="friend colleague met">Tantek &Ccedil;elik</a> created a JavaScript-driven slide show technique that worked on multiple browsers
@@ -93,7 +118,7 @@ img#me05 {top: 43px;left: 36px;}
 
 
 <div class="slide">
-<h1>Where We Are Now</h1>
+<h1>Beanstalkd</h1>
 <ul>
 <li>S5 builds on Tantek's scripts and ideas, with input and ideas from several other people</li>
 <li>Each slide is enclosed in a classed element; IDs are dynamically assigned via JavaScript</li>
