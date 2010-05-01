@@ -1,30 +1,26 @@
-Who am I?
+http://upload.wikimedia.org/wikipedia/commons/5/52/Data_Queue.svg
+http://en.wikipedia.org/wiki/File:Data_Queue.svg created by Wikipedia:User:Vegpuff {cc-by-sa-3.0}
 
-Senior (ergo, currently, only) PHP Developer at Binweevils.com
-Since December 2009
-Programming PHP since v3, ~ 11 years ago
+http://upload.wikimedia.org/wikipedia/en/6/6b/Msmq.jpg
+http://en.wikipedia.org/wiki/File:Msmq.jpg USGOV, public domain
 
-------------------------
+http://farm4.static.flickr.com/3514/3773863342_bcbc78aecf_o.jpg
+http://www.flickr.com/photos/dianaschnuth/3773863342/ http://creativecommons.org/licenses/by-nc-sa/2.0/
+http://www.flickr.com/photos/dianaschnuth/
 
-Queues
-    Acts as a message buffer between producer and consumer
-    
-Daemon
-    When messages are released to the consumer/worker
+http://nubyonrails.com/system/uploads/2007/q-summary.png
+http://nubyonrails.com/articles/about-this-blog-beanstalk-messaging-queue
 
-Producer
-    Creates messages that are put into the queue
-    
-Consumer/Worker
-    Pulls messages from the queue, and works on them
 
+Previously at a dating site, taking it from 75,000 members to 300,000
+and ending up with less server resources
+Sending 250,000 emails a week, via PEAR's Mail_Queue
 
 ------------------------
-
 
 Why are job queues useful?
 
-Many long running, or intensive tasks could be done in the background
+Many long running, or intensive tasks could be done in a background worker thread
 
   * Background Processing
   * Parallel Processing
@@ -43,6 +39,12 @@ Advantages
 * call functionality written in other languages
 
 
+
+Buzzwords
+ * Durability
+ * Reliability
+ * Scalability
+
 There are a number of jobQueue / message queues
 * ActiveMQ
 * RabbitMQ, written in Erlang (recently bought by VMWare)
@@ -58,14 +60,26 @@ There are a number of jobQueue / message queues
 * MSMQ
 * MemcacheQ - not built on memcache, but uses a similar text-based protocol
 
-Message formatting
-* Simple strings
-  * For example, 'clean URLs' style
-     * /task/image/resize/filename/12345.jpg/newx/640
-  * JSON
-     * { command: 'resize', param { 'filename': '12345.jpg' } }
-  * XML
-  * Google's own encodeing, _____________
+------------------------
+
+Features of queues
+
+Amazon SQS
+Proprietary web service,
+1c/10,000 msgs + bandwidth
+no gaurentee of timeliness
+  - some reports of multi-minute returns
+  - this can be entirely fine for many jobs (eg, transcoding video/audio)
+Up to 8KB in size
+
+------------------------
+
+Gearman
+Originally built by Livejournal in Perl
+
+Newer version is a C daemon
+
+more about syncronous tasks?
 
 ------------------------
 
@@ -73,6 +87,15 @@ queueing via a database
     DB speed
     PEAR Mail_Queue
 
+Polling
+    - Gizza job!
+    - Gizza job!
+    - Gizza job!
+    - Gizza job!
+    - Gizza job!
+    - Gizza job!
+Blocking
+    - I'll wait here till you have something
 
 Beanstalkd
     inspired by Memcache
@@ -129,33 +152,6 @@ Wikipedia has it's own job queue -
 
 ------------------------
 
-Not a dump-truck
-X South-road-dump-truck4.jpg
-
-------------------------
-
-series_of_tubes.jpg
-
-They want to deliver vast amounts of information over the 
-Internet. And again, the Internet is not something that 
-you just dump something on. It's not a big truck. It's a 
-series of tubes. And if you don't understand, those tubes 
-can be filled and if they are filled, when you put your 
-message in, it gets in line and it's going to be delayed 
-by anyone that puts into that tube enormous amounts of 
-material, enormous amounts of material.
-
-the-internet-a-series-of-tubes-300x262.jpg
-
-------------------------
-beanstalkd  is  a fast, distributed, in-memory work-queue 
-service. Its interface is generic, but was originally 
-designed for reducing the latency of page views in 
-high-volume web applications by running most 
-time-consuming tasks asynchronously.
-
-------------------------
-
 Why would you use a queue?
 
 If you don't need to do everything right now
@@ -163,21 +159,22 @@ If you don't need to do everything right now
 If you can't do it where you are
 
   - resizing images / videos
-
 ------------------------
 
-Three killer features  (Axe murderer pic?)
+Message formatting
+* Simple strings
+  * For example, 'clean URLs' style
+     * /task/image/resize/filename/12345.jpg/newx/640
+  * PHP's serialize/deserialize
+  * JSON
+     * { command: 'resize', param { 'filename': '12345.jpg' } }
+  * XML
+  * Google's own encodeing, protocol buffers (pb4php is still incomplete)
 
- * Priorities
- 
- * Tubes
- 
- * Delays
+------------------------
+------------------------
+------------------------
 
-------------------------
-------------------------
-------------------------
-------------------------
 Beanstalkd is a big to-do list for your distributed application. 
 If there is a unit of work that you want to defer to later 
 (say, sending an email, pushing some data to a slow external 
@@ -187,7 +184,6 @@ work, a 'job', into Beanstalkd. Some processes (such as web
 request handlers), 'producers', put jobs into the queue. Other 
 processes, 'workers', take jobs out of the queue and run them.
 From the BeanstalkD FAQ
-
 
 ------------------------
 wget http://xph.us/dist/beanstalkd/beanstalkd-1.4.2.tar.gz
@@ -246,11 +242,4 @@ $pheanstalk->delete($job);
 ------------------------
 ------------------------
 ------------------------
-
-Questions
-
-Alister Bulman
-http://abulman.co.uk
-http://www.google.com/profiles/abulman
-
 ------------------------
