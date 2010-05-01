@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="313.00000pt" height="225.00000pt" id="svg1430" sodipodi:version="0.32" inkscape:version="0.46" sodipodi:docbase="/home/ubuuser" sodipodi:docname="Data_queue.svg" inkscape:output_extension="org.inkscape.output.svg.inkscape">
+  <defs id="defs1432">
+    <inkscape:perspective sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 140.625 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="391.25 : 140.625 : 1" inkscape:persp3d-origin="195.625 : 93.75 : 1" id="perspective2424"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="2" inkscape:cx="167.43414" inkscape:cy="160" inkscape:document-units="px" inkscape:current-layer="layer1" inkscape:window-width="1279" inkscape:window-height="878" inkscape:window-x="0" inkscape:window-y="0" showgrid="false"/>
+  <metadata id="metadata1435">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1">
+    <rect inkscape:label="#node1" y="88.332878" x="-198.23196" height="27" width="87" id="node0" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+    <path sodipodi:type="star" style="fill: rgb(0, 0, 0); fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="path1446" sodipodi:sides="3" sodipodi:cx="353" sodipodi:cy="278.36218" sodipodi:r1="9.2195444" sodipodi:r2="4.6097722" sodipodi:arg1="-0.70862627" sodipodi:arg2="0.33857128" inkscape:flatsided="true" inkscape:rounded="0" inkscape:randomized="0" d="M 360,272.36218 L 354.69615,287.42436 L 344.30385,275.3 L 360,272.36218 z" transform="matrix(0.62357, 0.0110298, 0.297022, 1.1447, 32.5182, -147.252)"/>
+    <text xml:space="preserve" x="216.856" y="244.604" id="text2544" style="font-size: 24px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; text-align: start; line-height: 125%; text-anchor: start; font-family: Bitstream Vera Sans;" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan2546" x="216.856" y="244.604">Dequeue</tspan></text>
+    <text xml:space="preserve" x="46.7051" y="61.002" id="text2581" style="font-size: 24px; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; text-align: start; line-height: 125%; text-anchor: start; font-family: Bitstream Vera Sans;" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan2583" x="46.7051" y="61.002">Enqueue</tspan></text>
+    <path style="fill: none; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.736358px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" d="M 71.158408,152.23331 L 71.158408,152.23331 C 17.629222,143.64145 26.264054,114.71492 26.264054,114.71492" id="path2432"/>
+    <path style="fill: none; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 0.731332px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" d="M 335.44318,173.21293 L 335.44318,173.21293 C 315.22804,146.4015 259.55682,151.73912 259.55682,151.73912" id="path3204"/>
+    <rect inkscape:label="#node1" y="123.33257" x="-198.38312" height="27" width="87" id="rect2481" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+    <rect inkscape:label="#node1" y="158.33226" x="-198.53426" height="27" width="87" id="rect2483" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+    <rect inkscape:label="#node1" y="193.33195" x="-198.68539" height="27" width="87" id="rect2485" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+    <rect inkscape:label="#node1" y="228.33163" x="-198.83653" height="27" width="87" id="rect2487" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+    <path sodipodi:type="star" style="fill: rgb(0, 0, 0); fill-opacity: 1; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" id="path2489" sodipodi:sides="3" sodipodi:cx="353" sodipodi:cy="278.36218" sodipodi:r1="9.2195444" sodipodi:r2="4.6097722" sodipodi:arg1="-0.70862627" sodipodi:arg2="0.33857128" inkscape:flatsided="true" inkscape:rounded="0" inkscape:randomized="0" d="M 360,272.36218 L 354.69615,287.42436 L 344.30385,275.3 L 360,272.36218 z" transform="matrix(0.222493, -0.58263, 1.17747, 0.110085, -335.057, 326.78)"/>
+    <rect inkscape:label="#node1" y="13.713656" x="-109.86814" height="27" width="87" id="rect2491" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+    <rect inkscape:label="#node1" y="327.98309" x="-279.72684" height="27" width="87" id="rect2493" style="fill: rgb(0, 0, 255); fill-opacity: 0.75; fill-rule: evenodd; stroke: rgb(0, 0, 0); stroke-width: 1px; stroke-linecap: butt; stroke-linejoin: miter; stroke-opacity: 1;" transform="matrix(-0.00431828, -0.999991, 0.999991, -0.00431828, 0, 0)"/>
+  </g>
+</svg>
