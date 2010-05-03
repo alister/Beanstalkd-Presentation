@@ -57,20 +57,93 @@ blockquote {text-align: left;}
 <div class="slide">
 <h1>self::about()</h1>
 <h2>self::current()</h2>
-<p>PHP Developer at <a href="http://binweevils.com">Binweevils.com</a>, 
-Scaling and improving PHP-based systems, and related technologies. All the 
-while trying to avoid getting phone calls on weekends...</p>
+<p>Scaling PHP-based systems, with related technologies. PHP Developer at 
+<a href="http://binweevils.com">Binweevils.com</a>. All the while trying to 
+avoid getting phone calls on weekends...</p>
 <h2>self::prev()</h2>
 <p>Programming PHP since 1999, PHP v3, (@11 years ago). Previously in 
 everything from a ZX81, BBC/Electron, 6502 to 8086 Assembler, Pascal and C/C++ 
 before PHP</p>
+
+  <div class="handout">
+    <p>Programming since 198-cough</p>
+  </div>
 </div>
 
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Job Queues</h1>
-<h2>The Advantages</h2>
+<h1>What Is A ?</h1>
+<ul>
+    <li>Job Queue</li>
+    <li>Work Queue</li>
+    <li>Task Queue</li>
+    <li>Message Queue</li>
+</ul>
+<p>For our purposes, they all describe much the same thing</p>
+
+  <div class="handout">
+    <p>'Message Queue' is usually more 'enterprise-y, and often has
+     additional'Business Intelligence' within it.</p>
+  </div>
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>What Is A Job Queue?</h1>
+<p><blockquote>(Beanstalkd) is a simple, fast workqueue service. Its interface is 
+generic, but was originally designed for reducing the latency of page views in 
+high-volume web applications by running time-consuming tasks asynchronously.
+</blockquote>
+<cite><a href="http://kr.github.com/beanstalkd/">http://kr.github.com/beanstalkd/</a></cite>
+</p>
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>Huh?</h1>
+<ul class="incremental">
+<p>It's a big to-do list.</p>
+<p>You send it a message, and then can retrieve it later</p>
+
+  <div class="handout">
+    <p>Sometimes, you won't be pulling jobs out in the same order you that
+    put them in - but we'll come back to that later</p>
+  </div>
+</ul>
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>Why are job queues useful?</h1>
+<p>Many long running, or intensive tasks could be done in the background</p>
+<p> - Background or Parallel Processing</p>
+<hr/>
+<ul class="incremental">
+<li>processing image or videos</li>
+<li>Sending out emails</li>
+<li>Fetching information in the background - like RSS feeds</li>
+<li>Preparing information for later use</li>
+</ul>
+
+  <div class="handout">
+    <p>The classic problem is image uploads. Even happy-snap digital cameras 
+    can produce an image that is 3-4+ megabytes.  You can't just store that 
+    and end up resizing it in the browser. You have to resize it, but you also 
+    can't do it in the same PHP process that uploaded it - it takes too much 
+    time - and memory.</p>
+    <p>Don't even try to resize 5+ GB of 1080p quality HD video</p>
+  </div>
+
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>The Advantages</h1>
 <ul>
 <li>Parallel and/or asyncronous work
   <ul>
@@ -92,51 +165,20 @@ before PHP</p>
 <!-- ======================= -->
 
 <div class="slide">
-<h1>What Is A Job Queue?</h1>
-<p><blockquote>(Beanstalk) is a simple, fast workqueue service. Its interface is 
-generic, but was originally designed for reducing the latency of page views in 
-high-volume web applications by running time-consuming tasks asynchronously.
-</blockquote>
-<cite><a href="http://kr.github.com/beanstalkd/">http://kr.github.com/beanstalkd/</a></cite>
-</p>
-</div>
-
-<!-- ======================= -->
-
-<div class="slide">
-<h1>Huh?</h1>
-<ul class="incremental">
-<p>It's a big to-do list.</p>
-<p>You send it a message, and then can retrieve it later</p>
-</ul>
-</div>
-
-<!-- ======================= -->
-
-<div class="slide">
-<h1>Why are job queues useful?</h1>
-<p>Many long running, or intensive tasks could be done in the background</p>
-<p> - Background or Parallel Processing</p>
-<hr/>
-<ul class="incremental">
-<li>processing image or videos</li>
-<li>Sending out emails</li>
-<li>Fetching information in the background - like RSS feeds</li>
-<li>Preparing information for later use</li>
-</ul>
-<p>Not generally time critical, as long as it gets done</p>
-</div>
-
-<!-- ======================= -->
-
-<div class="slide">
 <h1>How It Works</h1>
+<img src="Msmq.jpg" width="518" height="210" alt="Msmq" align="right" />
+
 <ul class="incremental">
 <li>Queues: Acts as a message buffer between producer and consumer</li>
 <li>Daemon: When messages are released to the consumer/worker</li>
 <li>Producer: Creates messages that are put into the queue</li>
 <li>Consumer/Worker: Pulls messages from the queue, and works on them</li>
 </ul>
+
+  <div class="handout">
+    <p>We've talked about what you can do - and why you would, lets see how. 
+    How would a queue be structured</p>
+  </div>
 </div>
 
 <!-- ======================= -->
@@ -151,6 +193,21 @@ high-volume web applications by running time-consuming tasks asynchronously.
   </ul>
 </li>
 <li>PEAR's Mail_Queue</li>
+</ul>
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>Dedicated queue systems</h1>
+<h2>There are a number of jobQueue / message queues</h2>
+<ul>
+    <li>ActiveMQ</li>
+    <li>RabbitMQ, written in Erlang (recently bought by VMWare)</li>
+    <li>Amazon SQS</li>
+    <li>Gearman, like so many  other things, originally created by Livejournal</li>
+    <li>Zero MQ</li>
+    <li>Sparrow, Starling, and now Kestrel by Twitter</li>
 </ul>
 </div>
 
@@ -191,6 +248,13 @@ For COMMERCIAL USE LICENSING, visit http://tagcrowd.com/licensing.html
 
 <p>The daemon is equally dumb as a classic MemcacheD. Talking to multiple 
 servers is done from the client-side.</p>
+
+  <div class="handout">
+    <p>BeanstalkD was written in C for a Facebook app called 'Causes' - 
+    which was written in RubyOnRails</p>
+    <p>Not to be confused with the 'Beanstalkapp.com', which is remote 
+     SVN & GIT version control</p>
+  </div>
 </div>
 
 <!-- ======================= -->
@@ -459,27 +523,28 @@ exit (rand(95, 100));
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Questions ?</h1>
+<h1>Thanks</h1>
 <ul>
-    <li>Alister Bulman</li>
-    <li>http://abulman.co.uk</li>
-    <li>http://www.google.com/profiles/abulman</li>
-    <li>and elsewhere</li>
+    <li>PHP London</li>
+    <li>Remo Biagioni of Stickyeyes.com (presented at PHP conference) and mentioned his work with Beanstalkd to scale</li>
+    <li><a href="http://en.wikipedia.org/wiki/File:Msmq.jpg">http://en.wikipedia.org/wiki/File:Msmq.jpg</a> 
+        USGOV, public domain <img src="Msmq.jpg" width="200" alt="Msmq" align="left" /></li>
 </ul>
 </div>
 
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Thanks</h1>
+<h1>Questions ?</h1>
 <ul>
-    <li>PHP London</li>
-    <li>Remo Biagioni of Stickyeyes.com (presented at PHP conference) and mentioned his work with Beanstalkd to scale</li>
+    <li>Alister Bulman</li>
+    <li><a href="http://abulman.co.uk">http://abulman.co.uk</a></li>
+    <li><a href="http://www.google.com/profiles/abulman">http://www.google.com/profiles/abulman</a></li>
+    <li>and elsewhere</li>
 </ul>
-
 </div>
 
-</div>
+</div><!-- /div class="presentation" -->
 
 </body>
 </html>
