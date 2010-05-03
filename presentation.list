@@ -1,9 +1,6 @@
 http://upload.wikimedia.org/wikipedia/commons/5/52/Data_Queue.svg
 http://en.wikipedia.org/wiki/File:Data_Queue.svg created by Wikipedia:User:Vegpuff {cc-by-sa-3.0}
 
-http://upload.wikimedia.org/wikipedia/en/6/6b/Msmq.jpg
-http://en.wikipedia.org/wiki/File:Msmq.jpg USGOV, public domain
-
 http://farm4.static.flickr.com/3514/3773863342_bcbc78aecf_o.jpg
 http://www.flickr.com/photos/dianaschnuth/3773863342/ http://creativecommons.org/licenses/by-nc-sa/2.0/
 http://www.flickr.com/photos/dianaschnuth/
@@ -18,47 +15,6 @@ Sending 250,000 emails a week, via PEAR's Mail_Queue
 
 ------------------------
 
-Why are job queues useful?
-
-Many long running, or intensive tasks could be done in a background worker thread
-
-  * Background Processing
-  * Parallel Processing
-  * Distributed Processing
-
-* processing image or videos
-* Sending out emails 
-* Fetching information in the background
-  * Updating RSS feeds
-* Asyncronous processing
-* Fetching information periodically
-
-Advantages
-* Parallel and asyncronous work
-* Scales easily - run more workers
-* call functionality written in other languages
-
-
-
-Buzzwords
- * Durability
- * Reliability
- * Scalability
-
-There are a number of jobQueue / message queues
-* ActiveMQ
-* RabbitMQ, written in Erlang (recently bought by VMWare)
-* Amazon SQS
-* JMS
-* Gearman, like so many  other things, originally created by Livejournal and written in Perl. A newer version was created by KROW, with the daemon in 'C'
-* Zero MQ
-* Starling (was created/used by Twitter)
-* Sparrow
-* Kestrel
-* Dropr
-* Apache QPid
-* MSMQ
-* MemcacheQ - not built on memcache, but uses a similar text-based protocol
 
 ------------------------
 
