@@ -136,6 +136,8 @@ high-volume web applications by running time-consuming tasks asynchronously.
     can't do it in the same PHP process that uploaded it - it takes too much 
     time - and memory.</p>
     <p>Don't even try to resize 5+ GB of 1080p quality HD video</p>
+    <p>Use of queues at Flickr<br />
+        - the most popular use isn't even about resizing images</p>
   </div>
 
 </div>
@@ -187,13 +189,21 @@ high-volume web applications by running time-consuming tasks asynchronously.
 <h1>Queueing via a database</h1>
 <ul>
 <li>An obvious early step</li>
-<li>Not actually so well suited, especially with many transactions
-  <ul><li>high transaction costs - locking to ensure only one worker can get a message</li>
-      <li>polling the database - is there a message there?</li>
-  </ul>
+<li>Not actually so well suited, especially with many transactions <br />
+  <small>high transaction costs - locking to ensure only one worker can get a message</small>
 </li>
-<li>PEAR's Mail_Queue</li>
+<li>PEAR's Mail_Queue <small>can work very well with small number of 'workers'</small></li>
 </ul>
+<hr/>
+
+<p><strong>Polling</strong><br />
+<small>Gizza job! Gizza job! Gizza job! Gizza job! Gizza job! Gizza job! Gizza job! 
+Gizza job! Gizza job! Gizza job! Gizza job! Gizza job! Gizza job! Gizza job! Gizza 
+job! Gizza job! Gizza job! Gizza job! Gizza job! </small></small></p>
+
+<p><strong>Blocking</strong><br />
+<small>I'll wait here till you have something</small></p>
+
 </div>
 
 <!-- ======================= -->
@@ -232,7 +242,7 @@ For COMMERCIAL USE LICENSING, visit http://tagcrowd.com/licensing.html
  * CUSTOMIZE CLOUD CSS BELOW (optional)
  */
 	font-size: 36%;
-	width: 66%;		/* auto or fixed width, e.g. 500px   */
+	width: 55%;		/* auto or fixed width, e.g. 500px   */
 	font-family:'lucida grande','trebuchet ms',arial,helvetica,sans-serif;
 	background-color:#fff;
 	margin:1em 1em 0 1em;
@@ -243,7 +253,7 @@ For COMMERCIAL USE LICENSING, visit http://tagcrowd.com/licensing.html
  */
 }#htmltagcloud{line-height:2.4em;word-spacing:normal;letter-spacing:normal;text-transform:none;text-align:justify;text-indent:0}#htmltagcloud a:link{text-decoration:none}#htmltagcloud a:visited{text-decoration:none}#htmltagcloud a:hover{color:white;background-color:#05f}#htmltagcloud a:active{color:white;background-color:#03d}.wrd{padding:0;position:relative}.wrd a{text-decoration:none}.tagcloud0{font-size:1.0em;color:#ACC1F3;z-index:10}.tagcloud0 a{color:#ACC1F3}.tagcloud1{font-size:1.4em;color:#ACC1F3;z-index:9}.tagcloud1 a{color:#ACC1F3}.tagcloud2{font-size:1.8em;color:#86A0DC;z-index:8}.tagcloud2 a{color:#86A0DC}.tagcloud3{font-size:2.2em;color:#86A0DC;z-index:7}.tagcloud3 a{color:#86A0DC}.tagcloud4{font-size:2.6em;color:#607EC5;z-index:6}.tagcloud4 a{color:#607EC5}.tagcloud5{font-size:3.0em;color:#607EC5;z-index:5}.tagcloud5 a{color:#607EC5}.tagcloud6{font-size:3.3em;color:#4C6DB9;z-index:4}.tagcloud6 a{color:#4C6DB9}.tagcloud7{font-size:3.6em;color:#395CAE;z-index:3}.tagcloud7 a{color:#395CAE}.tagcloud8{font-size:3.9em;color:#264CA2;z-index:2}.tagcloud8 a{color:#264CA2}.tagcloud9{font-size:4.2em;color:#133B97;z-index:1}.tagcloud9 a{color:#133B97}.tagcloud10{font-size:4.5em;color:#002A8B;z-index:0}.tagcloud10 a{color:#002A8B}.freq{font-size:10pt !important;color:#bbb}#credit{text-align:center;color:#333;margin-bottom:0.6em;font:0.7em 'lucida grande',trebuchet,'trebuchet ms',verdana,arial,helvetica,sans-serif}#credit a:link{color:#777;text-decoration:none}#credit a:visited{color:#777;text-decoration:none}#credit a:hover{color:white;background-color:#05f}#credit a:active{text-decoration:underline}// -->
 </style>
-<div id="htmltagcloud"> <span id="0" class="wrd tagcloud3"><a href="#tagcloud">common</a></span> <span id="1" class="wrd tagcloud3"><a href="#tagcloud">erlang</a></span> <span id="2" class="wrd tagcloud3"><a href="#tagcloud">io</a></span> <span id="3" class="wrd tagcloud3"><a href="#tagcloud">java</a></span> <span id="4" class="wrd tagcloud3"><a href="#tagcloud">lisp</a></span> <span id="5" class="wrd tagcloud3"><a href="#tagcloud">ocaml</a></span> <span id="6" class="wrd tagcloud6"><a href="#tagcloud">perl</a></span> <span id="7" class="wrd tagcloud6"><a href="#tagcloud">php</a></span> <span id="8" class="wrd tagcloud6"><a href="#tagcloud">python</a></span> <span id="9" class="wrd tagcloud3"><a href="#tagcloud">rails</a></span> <span id="10" class="wrd tagcloud6"><a href="#tagcloud">ruby</a></span> <span id="11" class="wrd tagcloud3"><a href="#tagcloud">scheme</a></span> </div>
+<div id="htmltagcloud"> <span id="1" class="wrd tagcloud3"><a href="#tagcloud">erlang</a></span> <span id="2" class="wrd tagcloud3"><a href="#tagcloud">io</a></span> <span id="3" class="wrd tagcloud3"><a href="#tagcloud">java</a></span> <span id="4" class="wrd tagcloud3"><a href="#tagcloud">lisp</a></span> <span id="5" class="wrd tagcloud3"><a href="#tagcloud">ocaml</a></span> <span id="6" class="wrd tagcloud6"><a href="#tagcloud">perl</a></span> <span id="7" class="wrd tagcloud6"><a href="#tagcloud">php</a></span> <span id="8" class="wrd tagcloud6"><a href="#tagcloud">python</a></span> <span id="9" class="wrd tagcloud3"><a href="#tagcloud">rails</a></span> <span id="10" class="wrd tagcloud6"><a href="#tagcloud">ruby</a></span> <span id="11" class="wrd tagcloud3"><a href="#tagcloud">scheme</a></span> </div>
 <!-- end tag cloud : generated by TagCrowd.com : please keep this notice -->
 
 <p>The daemon is equally dumb as a classic MemcacheD. Talking to multiple 
@@ -278,14 +288,6 @@ fraction of the original, significantly improving the user experience.</small></
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Important Note</h1>
-<img src="South-road-dump-truck4.jpg" alt="Beanstalkd is NOT A DUMP TRUCK" align="left" />
-<p>It's NOT a big truck</p>
-</div>
-
-<!-- ======================= -->
-
-<div class="slide">
 <h1>Beanstalkd is a series of TUBES</h1>
 <img src="the-internet-a-series-of-tubes-300x262.jpg" alt="Beanstalkd is a series of TUBES" 
 align="left" style="padding-right: 1em; padding-bottom: 1em;"  />
@@ -300,28 +302,27 @@ enormous amounts of material.  - former United States Senator Ted Stevens (R-Ala
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Beanstalkd is a series of TUBES</h1>
-<img src="series_of_tubes.jpg" alt="series_of_tubes" width="400"
-align="left" style="padding-right: .25em; padding-bottom: .25em;" />
-<p style="margin-left: 50%;display:block;"><blockquote>
-... The Internet is not something that you just dump something on. It's not a 
-big truck. It's a series of tubes. And if you don't understand, those tubes 
-can be filled and if they are filled, when you put your message in, it gets 
-in line and it's going to be delayed by anyone that puts into that tube 
-enormous amounts of material.  - former United States Senator Ted Stevens (R-Alaska)</blockquote></p>
-
+<h1>Killer features</h1>
+<ul>
+    <li>Tube names</li>
+    <li>Priorities</li>
+    <li>Delays</li>
+    <li>TTR - time to run</li>
+</ul>
 </div>
 
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Killer features</h1>
-<ul>
-    <li>Priorities</li>
-    <li>Tube names</li>
-    <li>Delay</li>
-    <li>TTR</li>
-</ul>
+<h1>Tubes</h1>
+<p>Named tubes/queues can be created at will and have messages sent to them</p>
+<p>'default' queue is always created and read from, unless overridden</p>
+
+<p>Now _ with _ added _ underlines!</p>
+  <div class="handout">
+    <p>Pick a given set, and stick to them. Make sure you have at least a running worker reading from every tube</p>
+    <p>watch a tube-name based on the machine's hostname - file uploads onto a specific machine</p>
+  </div>
 </div>
 
 <!-- ======================= -->
@@ -344,22 +345,11 @@ $priority = YourApp_Task::PRI_LOGIN_ACTION;
 <!-- ======================= -->
 
 <div class="slide">
-<h1>Tubes</h1>
-<p>Named tubes/queues can be created at will and have messages sent to them</p>
-<p>'default' queue is always created and read from, unless overridden</p>
-
-  <div class="handout">
-    <p>Pick a given set, and stick to them. Make sure you have at least a running worker reading from every tube</p>
-    <p>watch a tube-name based on the machine's hostname - file uploads onto a specific machine</p>
-  </div>
-</div>
-
-<!-- ======================= -->
-
-<div class="slide">
 <h1>Delay</h1>
 <h2>Do this after <em>x</em> seconds</h2>
 <p>Hold a message within the queue before allowing it to be reserved, and acted upon</p>
+
+<p><em>I want you to do this job - but in at least x seconds time</em></p>
 </div>
 
 <!-- ======================= -->
@@ -412,15 +402,20 @@ Here is a picture with more possibilities:
 <div class="slide">
 <h1>What to send through the queue?</h1>
 <ul>
-    <li>/tasks/image/resize/filename/example.jpg</li>
-    <li>/tasks/image/resize/filename/example.jpg/sizeX/640/sizeY/480</li>
-    <li>/tasks/image/move/from/web1/to/centralstore/filename/example.jpg</li>
-    <li>/tasks/member/logintasks/id/12345</li>
-    <li>/tasks/event/add/id/12345/event/27</li>
-    <li>/tasks/mail/fetchcounts/id/12345</li>
+    <li>'Clean URLs':
+        <ul><li>/tasks/image/resize/filename/example.jpg/sizeX/640/sizeY/480</li>
+            <li>/tasks/member/logintasks/id/12345</li>
+            <li>/tasks/mail/fetchcounts/id/12345</li>
+        </ul>
+    <li>PHP's serialize/deserialize</li>
+    <li>JSON
+        <ul><li>{"module":"task","controller":"image","action":"resize",
+                 &nbsp;&nbsp;"params":{"filename":"example1.jpg"}}</li>
+        </ul>
+    </li>
+    <li>plain text: RESTART, STOP, UPDATE-COUNTS</li>
 </ul>
-<p>These would resize images, do simple actions, run more tasks, or prepare 
-information, maybe stored in the DB, or Memcached</p>
+<p>64KB default limit.</p>
 </div>
 
 <!-- ======================= -->
@@ -454,7 +449,7 @@ $pheanstalk->delete($job);
 </div>
 
 <!-- ======================= -->
-
+<!-- 
 <div class="slide">
 <h1>Running workers</h1>
 <small><small><pre><code>
@@ -489,9 +484,11 @@ sleep 1
 exec $0 $@
 </code></pre></small></small>
 </div>
-
+ -->
+ 
 <!-- ======================= -->
 
+<!-- 
 <div class="slide">
 <h1>Running workers - the PHP script</h1>
 <small><small><pre><code>
@@ -509,14 +506,109 @@ exit (rand(95, 100));
 */
 </code></pre></small></small>
 </div>
+-->
+<!-- ======================= -->
+
+
+
+<div class="slide">
+<h1>Behind the curtains</h1>
+<h2>telnet localhost 11300</h2>
+<ul>
+<li><pre><code>use &lt;tube>\r\n</pre></code></li>
+<li><pre><code>put &lt;pri> &lt;delay> &lt;ttr> &lt;bytes>\r\n<br />&lt;data>\r\n</pre></code></li>
+<li><pre><code>watch &lt;tube>\r\n</pre></code></li>
+<li><pre><code>reserve\r\n</pre></code>
+    <p>Alternatively, if you don't want to have to poll for a new job, you can specify a timeout:</p></li>
+<li><pre><code>reserve-with-timeout &lt;seconds>\r\n</pre></code></li>
+</ul>
+</div>
 
 <!-- ======================= -->
+
+<div class="slide">
+<h1>It's pretty quick</h1>
+<small><pre><code>
+&lt;?php
+require 'pheanstalk_init.php';
+$pheanstalk = new Pheanstalk('127.0.0.1');
+for ($i = 10000; $i > 0; $i --) {
+    $pheanstalk->put("job payload goes here\n");
+}
+</code></pre></small>
+<p>10,000 simple jobs queued:
+<pre>$ time php -f fillQueue.php
+
+real    0m3.272s
+user    0m1.764s
+sys     0m0.768s</pre></p>
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>And to fetch them</h1>
+<small><pre><code>
+&lt;?php
+require 'pheanstalk_init.php';
+$pheanstalk = new Pheanstalk('127.0.0.1');
+for ($i = 10000; $i > 0; $i --)
+{
+    $job = $pheanstalk->reserve(2);  // reserve - with timeout
+    if (! $job) {
+       continue;
+    }
+    $job->getData();
+    $pheanstalk->delete($job);
+}
+</code></pre></small>
+<p>10,000 simple jobs de-queued:
+<pre>$ time php -f getQueue.php
+
+real    0m4.973s
+user    0m2.584s
+sys     0m1.304s</pre></p>
+</div>
+
+<!-- ======================= -->
+
+<div class="slide">
+<h1>stats</h1>
+<small><pre># <strong>telnet localhost 11300</strong>
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+<strong>stats</strong>
+OK 814
+---
+current-jobs-urgent: 7145
+current-jobs-ready: 7145
+current-jobs-reserved: 0
+.....
+current-tubes: 1
+current-connections: 1
+current-producers: 0
+current-workers: 0
+current-waiting: 0
+total-connections: 5
+pid: 5756
+....
+</pre></small>
+</div>
+
+<!-- ======================= -->
+
+
+
 
 <div class="slide">
 <h1>In Summary</h1>
 <ul>
 <li>Job queuing systems can give a lot of flexability to pass messages into background processing</li>
-<li></li>
+<li>Background tasks are not subject to the same limits as a webpage would be - time or memory</li>
+<li>Work can be distributed across a number of machines</li>
+<li>Data can be generated and stored by the worker for later use</li>
+<li>Limited by your imagination on how to use it</li>
 </ul>
 </div>
 
@@ -525,10 +617,12 @@ exit (rand(95, 100));
 <div class="slide">
 <h1>Thanks</h1>
 <ul>
-    <li>PHP London</li>
+    <li>PHP London and the PHP Conference</li>
     <li>Remo Biagioni of Stickyeyes.com (presented at PHP conference) and mentioned his work with Beanstalkd to scale</li>
-    <li><a href="http://en.wikipedia.org/wiki/File:Msmq.jpg">http://en.wikipedia.org/wiki/File:Msmq.jpg</a> 
-        USGOV, public domain <img src="Msmq.jpg" width="200" alt="Msmq" align="left" /></li>
+    <li><img src="Msmq.jpg" width="200" alt="Msmq" align="left" />
+        <a href="http://en.wikipedia.org/wiki/File:Msmq.jpg">http://en.wikipedia.org/wiki/File:Msmq.jpg</a> 
+        USGOV, public domain </li>
+    <li style="clear:left">Beanstalkd FAQ and github pages at <a href="http://kr.github.com/beanstalkd/">http://kr.github.com/beanstalkd/</a></li>
 </ul>
 </div>
 
@@ -542,6 +636,9 @@ exit (rand(95, 100));
     <li><a href="http://www.google.com/profiles/abulman">http://www.google.com/profiles/abulman</a></li>
     <li>and elsewhere</li>
 </ul>
+
+<p>Beanstalkd on Github: <a href="http://kr.github.com/beanstalkd/">http://kr.github.com/beanstalkd/</a></p>
+
 </div>
 
 </div><!-- /div class="presentation" -->
